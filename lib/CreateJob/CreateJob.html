@@ -1,0 +1,125 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KTA-createJob', {
+        category: 'KTA',
+        color: '#AAAA66',
+        oneditprepare: function() {
+            // function updateTLSOptions() {
+            //     if ($("#node-input-usetls").is(':checked')) {
+            //         $("#node-row-tls").show();
+            //     } else {
+            //         $("#node-row-tls").hide();
+            //     }
+            // }
+            // if (this.tls) {
+            //     $('#node-input-usetls').prop('checked', true);
+            // } else {
+            //     $('#node-input-usetls').prop('checked', false);
+            // }
+            // updateTLSOptions();
+            // $("#node-input-usetls").on("click",function() {
+            //     updateTLSOptions();
+            // });
+        },
+        defaults: {
+            name: {
+                value: ""
+            },
+            content_type:{
+                value:""
+            },
+            url: {
+                value: ""
+            },
+            processId:{
+                value:""
+            },
+            sessionId:{
+                value:""
+            },
+            processVersion: {
+                value: ""
+            },
+            processName: {
+                value: ""
+            },
+            ntlmPassword: {
+                value: ""
+            },
+            ntlmUsername:{
+                value:""
+            },
+            ntlmDomain:{
+                value:""
+            },
+            ntlmWorkstation:{
+                value:""
+            },
+            tls: {type:"tls-config",required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'KTA-createJob'
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KTA-createJob">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-content_type"><i class="fa fa-tasks"></i> Content-Type</label>
+        <select type="text" id="node-input-content_type" class="test" style="width:70%;">
+        <option value="application/json" selected="selected">json</option>
+        <option value="application/xml">xml</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
+        <input type="url" id="node-input-url" placeholder="/url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-processId"><i class="icon-tag"></i> processId</label>
+        <input type="number" id="node-input-processId" placeholder="processId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-processVersion"><i class="fa fa-user"></i> processVersion</label>
+        <input type="text" id="node-input-processVersion" placeholder="process Version">
+    </div>
+    <div class="form-row">
+        <label for="node-input-processName"><i class="fa fa-user"></i> processName</label>
+        <input type="text" id="node-input-processName" placeholder="process Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sessionId"><i class="fa fa-user"></i> sessionId</label>
+        <input type="text" id="node-input-sessionId" placeholder="sessionId">
+    </div>
+    <h3>
+        Ntlm Config
+    </h3>
+    <div class="form-row">
+        <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
+        <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmDomain"><i class="fa fa-user"></i> ntlmDomain</label>
+        <input type="text" id="node-input-ntlmDomain" placeholder="ntlm Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmWorkstation"><i class="fa fa-user"></i> ntlmWorkstation</label>
+        <input type="text" id="node-input-ntlmWorkstation" placeholder="ntlm Workstation">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmPassword"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-input-ntlmPassword" placeholder="Password">
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="KTA-createJob">
+    <p>Node to createJob and get a session id in KTA</p>
+    <h3>Inputs</h3>
+</script>

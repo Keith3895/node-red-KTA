@@ -1,0 +1,30 @@
+{
+  "name": "modelr-KTA",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "loginUser": "./lib/loginUser/loginUser.js",
+      "logOff": "./lib/logOff/logOff.js",
+      "CreateJob": "./lib/CreateJob/CreateJob.js"
+    }
+  },
+  "keywords": [
+    "KTA",
+    "modeler",
+    "node-red"
+  ],
+  "author": {
+    "name": "Keith Franklin Jathanna"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "request-ntlm-continued": "^0.1.5",
+    "validator": "^10.8.0"
+  }
+}
