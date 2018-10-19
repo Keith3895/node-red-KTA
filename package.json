@@ -11,7 +11,8 @@
       "loginUser": "./lib/loginUser/loginUser.js",
       "logOff": "./lib/logOff/logOff.js",
       "CreateJob": "./lib/CreateJob/CreateJob.js",
-      "getActivities": "./lib/getActivities/getActivities.js"
+      "getActivities": "./lib/getActivities/getActivities.js",
+      "complete": "./lib/complete/complete.js"
     }
   },
   "keywords": [
