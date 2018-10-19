@@ -10,7 +10,8 @@
     "nodes": {
       "loginUser": "./lib/loginUser/loginUser.js",
       "logOff": "./lib/logOff/logOff.js",
-      "CreateJob": "./lib/CreateJob/CreateJob.js"
+      "CreateJob": "./lib/CreateJob/CreateJob.js",
+      "getActivities": "./lib/getActivities/getActivities.js"
     }
   },
   "keywords": [

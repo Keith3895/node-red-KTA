@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('KTA-createJob', {
+    RED.nodes.registerType('KTA-activityList', {
         category: 'KTA',
         color: '#AAAA66',
         oneditprepare: function() {
@@ -30,22 +30,16 @@
             url: {
                 value: ""
             },
-            processId:{
-                value:""
-            },
             sessionId:{
                 value:""
             },
-            processVersion: {
-                value: ""
-            },
-            processName: {
-                value: ""
-            },
-            withFile:{
+            useDefaultOuery:{
                 value:""
             },
-            fileType:{
+            queryId:{
+                value:""
+            },
+            queryName:{
                 value:""
             },
             ntlmPassword: {
@@ -66,12 +60,12 @@
         outputs: 1,
         icon: 'white-globe.png',
         label: function () {
-            return this.name || 'KTA-createJob'
+            return this.name || 'KTA-activityList'
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="KTA-createJob">
+<script type="text/x-red" data-template-name="KTA-activityList">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -88,32 +82,28 @@
         <input type="url" id="node-input-url" placeholder="/url">
     </div>
     <div class="form-row">
-        <label for="node-input-processId"><i class="icon-tag"></i> processId</label>
-        <input type="number" id="node-input-processId" placeholder="processId">
-    </div>
-    <div class="form-row">
-        <label for="node-input-processVersion"><i class="fa fa-user"></i> processVersion</label>
-        <input type="text" id="node-input-processVersion" placeholder="process Version">
-    </div>
-    <div class="form-row">
-        <label for="node-input-processName"><i class="fa fa-user"></i> processName</label>
-        <input type="text" id="node-input-processName" placeholder="process Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-sessionId"><i class="fa fa-user"></i> sessionId</label>
+        <label for="node-input-sessionId"><i class="icon-tag"></i> sessionId</label>
         <input type="text" id="node-input-sessionId" placeholder="sessionId">
     </div>
     <div class="form-row">
-        <input type="checkbox" id="node-input-withFile" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-withFile" style="width: auto" >withFile</label>
+        <label for="node-input-queryName"><i class="icon-tag"></i> queryName</label>
+        <input type="number" id="node-input-queryName" placeholder="query Name">
     </div>
     <div class="form-row">
-        <label for="node-input-fileType"><i class="fa fa-user"></i> fileType</label>
-        <input type="text" id="node-input-fileType" placeholder="fileType">
+        <label for="node-input-queryId"><i class="icon-tag"></i> queryId</label>
+        <input type="number" id="node-input-queryId" placeholder="query Id">
     </div>
-    <h4>
+    <div class="form-row">
+        <input type="checkbox" id="node-input-useDefaultQuery" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-useDefaultQuery" style="width: auto" >useDefaultQuery</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-user_id"><i class="fa fa-user"></i> UserID</label>
+        <input type="text" id="node-input-user_id" placeholder="UserID">
+    </div>
+    <h3>
         Ntlm Config
-    </hh4>
+    </h3>
     <div class="form-row">
         <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
         <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
@@ -133,7 +123,7 @@
     
 </script>
 
-<script type="text/x-red" data-help-name="KTA-createJob">
-    <p>Node to createJob and get a session id in KTA</p>
+<script type="text/x-red" data-help-name="KTA-activityList">
+    <p>Node to Login and get a session id in KTA</p>
     <h3>Inputs</h3>
 </script>
