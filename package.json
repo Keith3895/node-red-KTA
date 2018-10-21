@@ -12,7 +12,9 @@
       "logOff": "./lib/logOff/logOff.js",
       "CreateJob": "./lib/CreateJob/CreateJob.js",
       "getActivities": "./lib/getActivities/getActivities.js",
-      "complete": "./lib/complete/complete.js"
+      "complete": "./lib/complete/complete.js",
+      "kta-document": "./lib/kta-document/kta-document.js",
+      "take-cancel": "./lib/take-cancel/take-cancel.js"
     }
   },
   "keywords": [
