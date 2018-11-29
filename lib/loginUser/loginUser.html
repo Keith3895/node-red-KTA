@@ -19,6 +19,22 @@
             // $("#node-input-usetls").on("click",function() {
             //     updateTLSOptions();
             // });
+            function updatePassword() {
+                if ($("#node-input-withPassword").is(':checked')) {
+                    $("#node-row-password").show();
+                } else {
+                    $("#node-row-password").hide();
+                }
+            }
+            if (this.withPassword) {
+                $('#node-input-withPassword').prop('checked', true);
+            } else {
+                $('#node-input-withPassword').prop('checked', false);
+            }
+            updatePassword();
+            $("#node-input-withPassword").on("click",function() {
+                updatePassword();
+            });
         },
         defaults: {
             name: {
@@ -49,6 +65,12 @@
                 value:""
             },
             ntlmWorkstation:{
+                value:""
+            },
+            withPassword:{
+                value:""
+            },
+            password:{
                 value:""
             },
             tls: {type:"tls-config",required: false}
@@ -87,9 +109,17 @@
         <label for="node-input-UnconditionalLogOn" style="width: auto" >UnconditionalLogOn</label>
     </div>
     <div class="form-row">
+            <input type="checkbox" id="node-input-withPassword" style="display: inline-block; width: auto; vertical-align: top;">
+            <label for="node-input-withPassword" style="width: calc(100% - 170px);" > withPassword </label>
+        </div>
+    <div class="form-row">
         <label for="node-input-user_id"><i class="fa fa-user"></i> UserID</label>
         <input type="text" id="node-input-user_id" placeholder="UserID">
     </div>
+    <div class="form-row" id="node-row-password">
+            <label for="node-input-Password"><i class="fa fa-key"></i> Password</label>
+            <input type="password" id="node-input-Password" placeholder="Password">
+        </div>
     <h3>
         Ntlm Config
     </h3>
@@ -115,4 +145,66 @@
 <script type="text/x-red" data-help-name="KTA-login">
     <p>Node to Login and get a session id in KTA</p>
     <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>LogOnProtocol
+            <span class="property-type">number</span>
+        </dt>
+        <dd> 
+            use Value:
+            0 - Push  <br/>
+            1 - Pull  <br/>
+            2 - PushPull  <br/>
+            3 - Admin  <br/>
+            4 - Mis  <br/>
+            5 - Ide  <br/>
+            6 - NotSet  <br/>
+            7 - Internet  <br/>
+            8 - TransformationIde  <br/>
+            9 - LimitedUser  <br/>
+            10 - Device  <br/>
+
+        </dd> 
+        <dt>UnconditionalLogOn
+            <span class="property-type">Boolean</span>
+        </dt>
+        <dd> Indicates that a new session should be created if the user is already logged on </dd>   
+    </dd> 
+    <dt>UserID
+        <span class="property-type">String</span>
+    </dt>
+    <dd> UserID Credentails to signin.</dd>   
+    <dt>Password
+        <span class="property-type">String</span>
+    </dt>
+    <dd> Password Credentails to signin.</dd>  
+    </dl>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d:{
+        SessionId:  String,//  The user's session ID  
+        ResourceId:  String,//  The user's user ID  
+        DisplayName:  String,//  The user's user name  
+        isValid:  Boolean,//  Will be true if the session is valid  
+        LogonState:  Object //  The logon state information 
+    }
+}
+        </pre>
+        </dd>  
+    </dl>
+
+             
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>            
 </script>

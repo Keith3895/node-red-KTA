@@ -2,7 +2,7 @@
     RED.nodes.registerType('KTA-createJob', {
         category: 'KTA',
         color: '#AAAA66',
-        oneditprepare: function() {
+        oneditprepare: function () {
             // function updateTLSOptions() {
             //     if ($("#node-input-usetls").is(':checked')) {
             //         $("#node-row-tls").show();
@@ -24,17 +24,17 @@
             name: {
                 value: ""
             },
-            content_type:{
-                value:""
+            content_type: {
+                value: ""
             },
             url: {
                 value: ""
             },
-            processId:{
-                value:""
+            processId: {
+                value: ""
             },
-            sessionId:{
-                value:""
+            sessionId: {
+                value: ""
             },
             processVersion: {
                 value: ""
@@ -42,25 +42,25 @@
             processName: {
                 value: ""
             },
-            withFile:{
-                value:""
+            withFile: {
+                value: ""
             },
-            fileType:{
-                value:""
+            fileType: {
+                value: ""
             },
             ntlmPassword: {
                 value: ""
             },
-            ntlmUsername:{
-                value:""
+            ntlmUsername: {
+                value: ""
             },
-            ntlmDomain:{
-                value:""
+            ntlmDomain: {
+                value: ""
             },
-            ntlmWorkstation:{
-                value:""
+            ntlmWorkstation: {
+                value: ""
             },
-            tls: {type:"tls-config",required: false}
+            tls: { type: "tls-config", required: false }
         },
         inputs: 1,
         outputs: 1,
@@ -134,6 +134,88 @@
 </script>
 
 <script type="text/x-red" data-help-name="KTA-createJob">
-    <p>Node to createJob and get a session id in KTA</p>
+    <p>
+        Node to create job on KTA. <code>msg.payload</code> accepts the file as a single buffer object. <code>msg.filePath</code> can also be used to 
+        specify which file to use. 
+    </p>
+
     <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>processId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processId of the process, part of `process Identity`.
+        </dd> 
+        <dt>processVersion
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processVersion of the process, part of `process Identity`.
+        </dd> 
+        <dt>processName
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processName of the process, part of `process Identity`.
+        </dd> 
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+         
+        <dt>withFile
+            <span class="property-type">Boolean</span>
+        </dt>
+        <dd> Indicates that a new session should be created if the user is already logged on </dd>  
+        <dt>fileType
+            <span class="property-type">String</span>
+        </dt>
+        <dd> fileType/ MIME type of the file that is pushed to KTA.</dd>   
+        <dt>filePath
+            <span class="property-type">String</span>
+        </dt>
+        <dd> <em> Optional feild </em>. the feild can be used instead of sending the filebuffer as payload. </dd>   
+    
+    </dl>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d:{
+        "JobIdentity": {
+            "__type": "JobIdentity:http://www.kofax.com/agility/services/sdk",
+            "Id": "6687353B4D184CF78BA9ECD944EA8E55"
+        },
+    }
+}
+// if withFile = true then return value is. 
+{
+    d:{
+        ReturnedDocumentFields :  [OBject], // the extracted value from the document
+        ReturnedVariables:  [Object], // the input Output variable values.
+        "JobIdentity": {
+            "__type": "JobIdentity:http://www.kofax.com/agility/services/sdk",
+            "Id": "6687353B4D184CF78BA9ECD944EA8E55" // JobId
+        },
+        DocumentId: 61a9ef9f-55f5-4c1e-83ea-a9a700428f48
+    }
+}
+
+
+        </pre>
+        </dd>  
+    </dl>
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>
 </script>
