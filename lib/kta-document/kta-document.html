@@ -82,16 +82,16 @@
         <input type="url" id="node-input-url" placeholder="/url">
     </div>
     <div class="form-row">
-        <label for="node-input-LogOnProtocol"><i class="icon-tag"></i> LogOnProtocol</label>
-        <input type="number" id="node-input-LogOnProtocol" placeholder="LogOnProtocol">
+        <label for="node-input-sessionId"><i class="icon-tag"></i> session Id</label>
+        <input type="number" id="node-input-sessionId" placeholder="session Id">
     </div>
     <div class="form-row">
-        <input type="checkbox" id="node-input-UnconditionalLogOn" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-UnconditionalLogOn" style="width: auto" >UnconditionalLogOn</label>
+        <label for="node-input-documentId"><i class="icon-tag"></i> document Id</label>
+        <input type="number" id="node-input-documentId" placeholder="document Id">
     </div>
     <div class="form-row">
-        <label for="node-input-user_id"><i class="fa fa-user"></i> UserID</label>
-        <input type="text" id="node-input-user_id" placeholder="UserID">
+        <label for="node-input-fieldIdentity"><i class="icon-tag"></i> field Identity</label>
+        <input type="number" id="node-input-fieldIdentity" placeholder="field Identity">
     </div>
     <h3>
         Ntlm Config
@@ -116,6 +116,44 @@
 </script>
 
 <script type="text/x-red" data-help-name="KTA-document">
-    <p>Node to Login and get a session id in KTA</p>
-    <h3>Inputs</h3>
+
+
+<p>
+    Node to create job on KTA. <code>msg.payload</code> accepts the file as a single buffer object. <code>msg.filePath</code> can also be used to 
+    specify which file to use. 
+</p>
+
+<h3>Inputs</h3>
+<dl class="message-properties">
+    <dt>url
+        <span class="property-type">String</span>
+    </dt>
+    <dd> The base url of the kie-server </dd>   
+    <dt>sessionId
+        <span class="property-type">String</span>
+    </dt>
+    <dd> Unique session id used to identify current session. </dd>
+    <dt>documentId
+        <span class="property-type">String</span>
+    </dt>
+    <dd> 
+        The id of the document to be retrieved. Cannot be null or empty
+    </dd> 
+    <dt>fieldIdentity
+        <span class="property-type">String</span>
+    </dt>
+    <dd> 
+        The id of the field 
+    </dd> 
+</dl>
+
+<h3>Output</h3>
+<dl class="message-properties">
+    <dt>Payload
+        <span class="property-type">JSON</span>
+    </dt>
+    <dd> 
+       an object with Document details like fileds, name, etc.
+    </dd>  
+</dl>
 </script>
