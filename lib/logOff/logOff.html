@@ -2,7 +2,7 @@
     RED.nodes.registerType('KTA-logoff', {
         category: 'KTA',
         color: '#AAAA66',
-        oneditprepare: function() {
+        oneditprepare: function () {
             // function updateTLSOptions() {
             //     if ($("#node-input-usetls").is(':checked')) {
             //         $("#node-row-tls").show();
@@ -24,28 +24,28 @@
             name: {
                 value: ""
             },
-            content_type:{
-                value:""
+            content_type: {
+                value: ""
             },
             url: {
                 value: ""
             },
-            sessionId:{
-                value:""
+            sessionId: {
+                value: ""
             },
             ntlmPassword: {
                 value: ""
             },
-            ntlmUsername:{
-                value:""
+            ntlmUsername: {
+                value: ""
             },
-            ntlmDomain:{
-                value:""
+            ntlmDomain: {
+                value: ""
             },
-            ntlmWorkstation:{
-                value:""
+            ntlmWorkstation: {
+                value: ""
             },
-            tls: {type:"tls-config",required: false}
+            tls: { type: "tls-config", required: false }
         },
         inputs: 1,
         outputs: 1,
@@ -100,6 +100,32 @@
 </script>
 
 <script type="text/x-red" data-help-name="KTA-logoff">
-    <p>Node to Login and get a session id in KTA</p>
+    <p>Node to Logout from a sesssion in KTA.</p>
     <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>SessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>       
+    </dl>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d:null
+}
+            </pre>
+        </dd>  
+    </dl>
+
+    
 </script>
