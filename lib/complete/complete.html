@@ -84,26 +84,7 @@
         <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
         <input type="url" id="node-input-url" placeholder="/url">
     </div>
-    <div class="form-row">
-        <label for="node-input-sessionId"><i class="icon-tag"></i> sessionId</label>
-        <input type="text" id="node-input-sessionId" placeholder="sessionId">
-    </div>
-    <div class="form-row">
-        <label for="node-input-queryName"><i class="icon-tag"></i> queryName</label>
-        <input type="number" id="node-input-queryName" placeholder="query Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-queryId"><i class="icon-tag"></i> queryId</label>
-        <input type="number" id="node-input-queryId" placeholder="query Id">
-    </div>
-    <div class="form-row">
-        <input type="checkbox" id="node-input-useDefaultQuery" style="display: inline-block; width: auto; vertical-align: top;">
-        <label for="node-input-useDefaultQuery" style="width: auto" >useDefaultQuery</label>
-    </div>
-    <div class="form-row">
-        <label for="node-input-user_id"><i class="fa fa-user"></i> UserID</label>
-        <input type="text" id="node-input-user_id" placeholder="UserID">
-    </div>
+    
     <h3>
         Ntlm Config
     </h3>
@@ -127,6 +108,62 @@
 </script>
 
 <script type="text/x-red" data-help-name="KTA-complete">
-    <p>Node to Login and get a session id in KTA</p>
+
+    <p>
+        Node to Complete a activity in KTA.
+    </p>
+
     <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>NodeId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The id of the activity within a process.
+        </dd> 
+        <dt>EmbeddedProcessCount
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The map level on which the activity resides. If this parameter is 0 the map is the parent map, if it is 1 it is a child map and so on.
+        </dd> 
+        <dt>JobId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The job that the activity belongs to.
+        </dd> 
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+         
+        <dt>ActivityName
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Name of activity. NOT used by this API   </dd>  
+    
+    </dl>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d: null
+}
+
+        </pre>
+        </dd>  
+    </dl>
+ <h4> 
+    read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+ </h4>
 </script>
