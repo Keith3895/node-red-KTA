@@ -14,7 +14,8 @@
       "getActivities": "./lib/getActivities/getActivities.js",
       "complete": "./lib/complete/complete.js",
       "kta-document": "./lib/kta-document/kta-document.js",
-      "take-cancel": "./lib/take-cancel/take-cancel.js"
+      "take-cancel": "./lib/take-cancel/take-cancel.js",
+      "save": "./lib/save/save.js"
     }
   },
   "keywords": [
