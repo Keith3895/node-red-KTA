@@ -15,7 +15,8 @@
       "complete": "./lib/complete/complete.js",
       "kta-document": "./lib/kta-document/kta-document.js",
       "take-cancel": "./lib/take-cancel/take-cancel.js",
-      "save": "./lib/save/save.js"
+      "save": "./lib/save/save.js",
+      "CreateCase": "./lib/CreateCase/CreateCase.js"
     }
   },
   "keywords": [
