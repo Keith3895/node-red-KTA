@@ -1,0 +1,209 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KTA-getGroup', {
+        category: 'KTA',
+        color: '#AAAA66',
+        oneditprepare: function () {
+            // function updateTLSOptions() {
+            //     if ($("#node-input-usetls").is(':checked')) {
+            //         $("#node-row-tls").show();
+            //     } else {
+            //         $("#node-row-tls").hide();
+            //     }
+            // }
+            // if (this.tls) {
+            //     $('#node-input-usetls').prop('checked', true);
+            // } else {
+            //     $('#node-input-usetls').prop('checked', false);
+            // }
+            // updateTLSOptions();
+            // $("#node-input-usetls").on("click",function() {
+            //     updateTLSOptions();
+            // });
+        },
+        defaults: {
+            name: {
+                value: ""
+            },
+            content_type: {
+                value: ""
+            },
+            url: {
+                value: ""
+            },
+            sessionId: {
+                value: ""
+            },
+            Id: {
+                value: ""
+            },
+            Name: {
+                value: ""
+            },
+            ResourceType: {
+                value: ""
+            },
+            ntlmPassword: {
+                value: ""
+            },
+            ntlmUsername: {
+                value: ""
+            },
+            ntlmDomain: {
+                value: ""
+            },
+            ntlmWorkstation: {
+                value: ""
+            },
+            tls: { type: "tls-config", required: false }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'KTA-getGroup'
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KTA-getGroup">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-content_type"><i class="fa fa-tasks"></i> Content-Type</label>
+        <select type="text" id="node-input-content_type" class="test" style="width:70%;">
+        <option value="application/json" selected="selected">json</option>
+        <option value="application/xml">xml</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
+        <input type="url" id="node-input-url" placeholder="/url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sessionId"><i class="fa fa-user"></i> sessionId</label>
+        <input type="text" id="node-input-sessionId" placeholder="sessionId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Id"><i class="fa fa-user"></i> Id</label>
+        <input type="text" id="node-input-Id" placeholder="Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Name"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+        <div class="form-row">
+            <label for="node-input-ResourceType"><i class="fa fa-user"></i> ResourceType</label>
+            <input type="text" id="node-input-ResourceType" placeholder="ResourceType">
+        </div>
+        
+    
+    <h4>
+        Ntlm Config
+    </hh4>
+    <div class="form-row">
+        <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
+        <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmDomain"><i class="fa fa-user"></i> ntlmDomain</label>
+        <input type="text" id="node-input-ntlmDomain" placeholder="ntlm Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmWorkstation"><i class="fa fa-user"></i> ntlmWorkstation</label>
+        <input type="text" id="node-input-ntlmWorkstation" placeholder="ntlm Workstation">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmPassword"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-input-ntlmPassword" placeholder="Password">
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="KTA-getGroup">
+    <p>
+        Node to create job on KTA. <code>msg.payload</code> accepts the file as a single buffer object. <code>msg.filePath</code> can also be used to 
+        specify which file to use. 
+    </p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>processId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processId of the process, part of `process Identity`.
+        </dd> 
+        <dt>processVersion
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processVersion of the process, part of `process Identity`.
+        </dd> 
+        <dt>processName
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            processName of the process, part of `process Identity`.
+        </dd> 
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+         
+        <dt>withFile
+            <span class="property-type">Boolean</span>
+        </dt>
+        <dd> Indicates that a new session should be created if the user is already logged on </dd>  
+        <dt>fileType
+            <span class="property-type">String</span>
+        </dt>
+        <dd> fileType/ MIME type of the file that is pushed to KTA.</dd>   
+        <dt>filePath
+            <span class="property-type">String</span>
+        </dt>
+        <dd> <em> Optional feild </em>. the feild can be used instead of sending the filebuffer as payload. </dd>   
+    
+    </dl>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d:{
+        "JobIdentity": {
+            "__type": "JobIdentity:http://www.kofax.com/agility/services/sdk",
+            "Id": "6687353B4D184CF78BA9ECD944EA8E55"
+        },
+    }
+}
+// if withFile = true then return value is. 
+{
+    d:{
+        ReturnedDocumentFields :  [OBject], // the extracted value from the document
+        ReturnedVariables:  [Object], // the input Output variable values.
+        "JobIdentity": {
+            "__type": "JobIdentity:http://www.kofax.com/agility/services/sdk",
+            "Id": "6687353B4D184CF78BA9ECD944EA8E55" // JobId
+        },
+        DocumentId: 61a9ef9f-55f5-4c1e-83ea-a9a700428f48
+    }
+}
+
+
+        </pre>
+        </dd>  
+    </dl>
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>
+</script>
