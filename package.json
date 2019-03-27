@@ -17,7 +17,8 @@
       "take-cancel": "./lib/take-cancel/take-cancel.js",
       "save": "./lib/save/save.js",
       "CreateCase": "./lib/CreateCase/CreateCase.js",
-      "getGroup": "./lib/getGroup/getGroup.js"
+      "getGroup": "./lib/getGroup/getGroup.js",
+      "reassign": "./lib/reassign/reassign.js"
     }
   },
   "keywords": [
