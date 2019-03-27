@@ -1,0 +1,212 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KTA-reassign', {
+        category: 'KTA',
+        color: '#AAAA66',
+        oneditprepare: function() {
+            // function updateTLSOptions() {
+            //     if ($("#node-input-usetls").is(':checked')) {
+            //         $("#node-row-tls").show();
+            //     } else {
+            //         $("#node-row-tls").hide();
+            //     }
+            // }
+            // if (this.tls) {
+            //     $('#node-input-usetls').prop('checked', true);
+            // } else {
+            //     $('#node-input-usetls').prop('checked', false);
+            // }
+            // updateTLSOptions();
+            // $("#node-input-usetls").on("click",function() {
+            //     updateTLSOptions();
+            // });
+        },
+        defaults: {
+            name: {
+                value: ""
+            },
+            content_type:{
+                value:""
+            },
+            url: {
+                value: ""
+            },
+            sessionId:{
+                value:""
+            },
+            NodeId: {
+                value: ""
+            },
+            EmbeddedProcessCount: {
+                value: ""
+            },
+            JobId: {
+                value: ""
+            },
+            ActivityName: {
+                value: ""
+            },
+            ntlmPassword: {
+                value: ""
+            },
+            ntlmUsername:{
+                value:""
+            },
+            ntlmDomain:{
+                value:""
+            },
+            ntlmWorkstation:{
+                value:""
+            },
+            tls: {type:"tls-config",required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'KTA-reassign'
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KTA-reassign">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-content_type"><i class="fa fa-tasks"></i> Content-Type</label>
+        <select type="text" id="node-input-content_type" class="test" style="width:70%;">
+        <option value="application/json" selected="selected">json</option>
+        <option value="application/xml">xml</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
+        <input type="url" id="node-input-url" placeholder="/url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sessionId"><i class="icon-tag"></i> sessionId</label>
+        <input type="text" id="node-input-sessionId" placeholder="sessionId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-NodeId"><i class="icon-tag"></i> NodeId</label>
+        <input type="number" id="node-input-NodeId" placeholder="Node Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-EmbeddedProcessCount"><i class="icon-tag"></i> Embedded Process Count</label>
+        <input type="number" id="node-input-EmbeddedProcessCount" placeholder="Embedded Process Count">
+    </div>
+    <div class="form-row">
+        <label for="node-input-JobId"><i class="icon-tag"></i> Job Id</label>
+        <input type="text" id="node-input-JobId" placeholder="Job Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ActivityName"><i class="fa fa-user"></i> Activity Name</label>
+        <input type="text" id="node-input-ActivityName" placeholder="Activity Name">
+    </div>
+    <div class="form-row">
+        <input type="checkbox" id="node-input-take" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-take" style="width: auto" >take</label>
+    </div>
+    <h3>
+        Ntlm Config
+    </h3>
+    <div class="form-row">
+        <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
+        <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmDomain"><i class="fa fa-user"></i> ntlmDomain</label>
+        <input type="text" id="node-input-ntlmDomain" placeholder="ntlm Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmWorkstation"><i class="fa fa-user"></i> ntlmWorkstation</label>
+        <input type="text" id="node-input-ntlmWorkstation" placeholder="ntlm Workstation">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmPassword"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-input-ntlmPassword" placeholder="Password">
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="KTA-reassign">
+    <p>Node to Login and get a session id in KTA</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>NodeId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The id of the activity within a process.
+        </dd> 
+        <dt>EmbeddedProcessCount
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The map level on which the activity resides. If this parameter is 0 the map is the parent map, if it is 1 it is a child map and so on.
+        </dd> 
+        <dt>JobId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> 
+            The job that the activity belongs to.
+        </dd> 
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+         
+        <dt>ActivityName
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Name of activity.</dd>  
+        <dt>newResource	
+            <span class="property-type">Object</span>
+        </dt>
+        <dd> A ResourceIdentity identity object containing the resource id to whom the activity has to be assigned.
+            <pre>
+"newResource":{
+    "Id": "BC549E11229C4A70B41A7606BE98DC19",
+    "Name":"Gowtham",
+    "ResourceType": 0
+
+}
+            </pre>
+
+        </dd>
+        
+        <dt>originalResource	
+            <span class="property-type">Object</span>
+        </dt>
+        <dd> A ResourceIdentity identity object containing the resource id from whom the activity has to be assigned to other resource. 
+            <pre>
+"originalResource":{
+    "Id":"F4B0ADF438C64012A40016CE3B65913E",
+    "Name":"bpmsc",
+    "ResourceType": 0
+}
+            </pre>
+        </dd>   
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+{
+    d:{}
+}
+        </pre>
+        </dd>  
+    </dl>
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>
+</script>
