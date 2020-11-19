@@ -14,9 +14,6 @@
             sessionId: {
                 value: ""
             },
-            useDefaultOuery: {
-                value: ""
-            },
             resourceId: {
                 value: ""
             },
@@ -36,6 +33,9 @@
                 value: ""
             },
             resourceName: {
+                value: ""
+            },
+            useDefaultOuery: {
                 value: ""
             },
             ntlmPassword: {
@@ -149,15 +149,22 @@
             <span class="property-type">String</span>
         </dt>
         <dd> Unique session id used to identify current session. </dd>
-        <dt>queryId
+        <dt>Resource Id
             <span class="property-type">String</span>
         </dt>
-        <dd> The query identity.</dd>
-        <dt>queryName
+        <dd> Unique Resource id used to identify current Resource. </dd>
+        <dt>Case Id
             <span class="property-type">String</span>
         </dt>
-        <dd> The query Name.</dd>
-        
+        <dd> Unique Case id used to filter the particular case reference. </dd>
+        <dt>Page Size
+            <span class="property-type">Number</span>
+        </dt>
+        <dd> The limit count to fetch the number of activities per page </dd>
+        <dt>Page Direction
+            <span class="property-type">Number</span>
+        </dt>
+        <dd> To fetch the previous (set to 0) or Next (set to 1) set of activities. </dd>
         <dt>useDefaultQuery
             <span class="property-type">Boolean</span>
         </dt>
