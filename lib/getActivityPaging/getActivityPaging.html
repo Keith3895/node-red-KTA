@@ -1,14 +1,11 @@
 <script type="text/javascript">
-    RED.nodes.registerType('KTA-activityList', {
+    RED.nodes.registerType('KTA-activityPaging', {
         category: 'KTA',
         color: '#AAAA66',
         oneditprepare: function () {
         },
         defaults: {
             name: {
-                value: ""
-            },
-            content_type: {
                 value: ""
             },
             url: {
@@ -20,10 +17,25 @@
             useDefaultOuery: {
                 value: ""
             },
-            queryId: {
+            resourceId: {
                 value: ""
             },
-            queryName: {
+            caseId: {
+                value: ""
+            },
+            pageSize: {
+                value: ""
+            },
+            pageDirection: {
+                value: ""
+            },
+            StartDueDateTime: {
+                value: ""
+            },
+            StartPendingTime: {
+                value: ""
+            },
+            resourceName: {
                 value: ""
             },
             ntlmPassword: {
@@ -44,12 +56,12 @@
         outputs: 1,
         icon: 'white-globe.png',
         label: function () {
-            return this.name || 'KTA-activityList'
+            return this.name || 'KTA-activityPaging'
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="KTA-activityList">
+<script type="text/x-red" data-template-name="KTA-activityPaging">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -103,14 +115,14 @@
     
 </script>
 
-<script type="text/x-red" data-help-name="KTA-activityList">
+<script type="text/x-red" data-help-name="KTA-activityPaging">
     <p>Node to Login and get a session id in KTA</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>url
             <span class="property-type">String</span>
         </dt>
-        <dd> The base url of the kie-server </dd>   
+        <dd> The base url of the KTA-Server </dd>   
         <dt>sessionId
             <span class="property-type">String</span>
         </dt>
@@ -136,32 +148,59 @@
         </dt>
         <dd> 
             <pre>
-{
-    d:{
-        Activities:[
-        ActivityType:Object,
-        ActivityIdentity:{
-            "JobId": "CFD82F712134483B877F50706A33D13D",
-            "ActivityName": "lookup"
-        },
-        "Process": {
-            "__type": "ProcessIdentity:http://www.kofax.com/agility/services/sdk",
-            "Id": "2119F0A2FECF4EC9A26F51964BF40438",
-            "Version": 42,
-            "Name": "poccapture"
-        },
-        "Resource": {
-            "__type": "ResourceIdentity:http://www.kofax.com/agility/services/sdk",
-            "Id": "1B2D01A0C9B546038741DB8F4FB1D159",
-            "Name": "Initiator",
-            "ResourceType": 3
-        },
-        ],
-        "Columns": [],
-        "WorkQueueFields": [],
-        "TotalActivityCount": 1
-    }
-}
+                {
+                    "d": {
+                        "__type": "WorkQueueQueryResult2:http://www.kofax.com/agility/services/sdk",
+                        "JobActivitySummaryCollection": [
+                        {
+                          "Status": {
+                                "__type": "ActivityStatus:http://www.kofax.com/agility/services/sdk",
+                                "Value": 10,
+                                "FormattedAsText": "Saved"
+                            },
+                            "Priority": 1,
+                            "DueDateTime": "/Date(1583488729000+0800)/",
+                            "AssociatedFile": "RenewalNoChangeRejected.form",
+                            "ActivityIdentity": {
+                                "__type": "JobActivityIdentity:http://www.kofax.com/agility/services/sdk",
+                                "NodeId": 4,
+                                "EmbeddedProcessCount": 1,
+                                "JobId": "EEAA2C61B04347B69367428F10C16BF2",
+                                "ActivityName": "Rejected"
+                            },
+                            "Process": {
+                                "__type": "ProcessIdentity:http://www.kofax.com/agility/services/sdk",
+                                "Id": "6B194C02BE2B4103B0028D8A99104903",
+                                "Version": 47,
+                                "Name": "RenewalNoChange"
+                            },
+                            "Resource": {
+                                "__type": "ResourceIdentity:http://www.kofax.com/agility/services/sdk",
+                                "Id": "DB3ED0F2B98F40329EBEB25F1D2D8EAA",
+                                "Name": "bpmgn",
+                                "ResourceType": 0
+                            },
+                            "PendingDateTime": "/Date(1599818475293+0800)/",
+                            "CustomData": "9/11/2020 6:01:09 PM!*HUP SOON LIGHTING!*RenewalNoChange!*Fire(FMP)!*!*False!*F0233876!*40",
+                            "JobState": "Rejected   
+                         }
+                        ],
+                        "JobIdentityCollection": [],
+                        "FirstDueDate": "/Date(1583488729000+0800)/",
+                        "FirstPendingTime": "/Date(1599818475293+0800)/",
+                        "FirstPriority": 1,
+                        "LastDueDate": "/Date(1583488729000+0800)/",
+                        "LastPendingTime": "/Date(1599818475293+0800)/",
+                        "LastPriority": 1,
+                        "NumberOfActivitiesObtained": 1,
+                        "JobActivitySummary2Collection": [
+                           
+                        ],
+                        "Columns": [],
+                        "WorkQueueFields": [],
+                        "TotalActivityCount": 257
+                    }
+                }
         </pre>
         </dd>  
     </dl>
