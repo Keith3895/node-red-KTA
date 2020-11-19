@@ -1,0 +1,239 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KTA-activityPaging', {
+        category: 'KTA',
+        color: '#AAAA66',
+        oneditprepare: function () {
+        },
+        defaults: {
+            name: {
+                value: ""
+            },
+            url: {
+                value: ""
+            },
+            sessionId: {
+                value: ""
+            },
+            resourceId: {
+                value: ""
+            },
+            caseId: {
+                value: ""
+            },
+            pageSize: {
+                value: ""
+            },
+            pageDirection: {
+                value: ""
+            },
+            StartDueDateTime: {
+                value: ""
+            },
+            StartPendingTime: {
+                value: ""
+            },
+            resourceName: {
+                value: ""
+            },
+            useDefaultOuery: {
+                value: ""
+            },
+            ntlmPassword: {
+                value: ""
+            },
+            ntlmUsername: {
+                value: ""
+            },
+            ntlmDomain: {
+                value: ""
+            },
+            ntlmWorkstation: {
+                value: ""
+            },
+            tls: { type: "tls-config", required: false }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'KTA-activityPaging'
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KTA-activityPaging">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-content_type"><i class="fa fa-tasks"></i> Content-Type</label>
+        <select type="text" id="node-input-content_type" class="test" style="width:70%;">
+        <option value="application/json" selected="selected">json</option>
+        <option value="application/xml">xml</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
+        <input type="url" id="node-input-url" placeholder="/url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sessionId"><i class="icon-tag"></i> sessionId</label>
+        <input type="text" id="node-input-sessionId" placeholder="sessionId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-resourceId"><i class="icon-tag"></i> resourceId</label>
+        <input type="text" id="node-input-resourceId" placeholder="Resource ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-resourceName"><i class="icon-tag"></i> resourceName</label>
+        <input type="text" id="node-input-resourceName" placeholder="Resource Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-caseId"><i class="icon-tag"></i> caseId</label>
+        <input type="text" id="node-input-caseId" placeholder="Case Id">
+    </div>
+  
+    <div class="form-row">
+        <label for="node-input-pageSize"><i class="icon-tag"></i> pageSize</label>
+        <input type="number" id="node-input-pageSize" placeholder="Page Size">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pageDirection"><i class="icon-tag"></i> pageDirection</label>
+        <input type="number" id="node-input-pageDirection" placeholder="Page Direction">
+    </div>
+    <div class="form-row">
+        <label for="node-input-StartDueDateTime"><i class="icon-tag"></i> StartDueDateTime</label>
+        <input type="text" id="node-input-StartDueDateTime" placeholder="Start Due Date Time">
+    </div>
+    <div class="form-row">
+        <label for="node-input-StartPendingTime"><i class="icon-tag"></i> StartPendingTime</label>
+        <input type="text" id="node-input-StartPendingTime" placeholder="StartPendingTime">
+    </div>
+    <div class="form-row">
+        <input type="checkbox" id="node-input-useDefaultQuery" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-useDefaultQuery" style="width: auto" >useDefaultQuery</label>
+    </div>
+ 
+    <h3>
+        Ntlm Config
+    </h3>
+    <div class="form-row">
+        <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
+        <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmDomain"><i class="fa fa-user"></i> ntlmDomain</label>
+        <input type="text" id="node-input-ntlmDomain" placeholder="ntlm Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmWorkstation"><i class="fa fa-user"></i> ntlmWorkstation</label>
+        <input type="text" id="node-input-ntlmWorkstation" placeholder="ntlm Workstation">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmPassword"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-input-ntlmPassword" placeholder="Password">
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="KTA-activityPaging">
+    <p>Node to Login and get a session id in KTA</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the KTA-Server </dd>   
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+        <dt>Resource Id
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique Resource id used to identify current Resource. </dd>
+        <dt>Case Id
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique Case id used to filter the particular case reference. </dd>
+        <dt>Page Size
+            <span class="property-type">Number</span>
+        </dt>
+        <dd> The limit count to fetch the number of activities per page </dd>
+        <dt>Page Direction
+            <span class="property-type">Number</span>
+        </dt>
+        <dd> To fetch the previous (set to 0) or Next (set to 1) set of activities. </dd>
+        <dt>useDefaultQuery
+            <span class="property-type">Boolean</span>
+        </dt>
+        <dd> if set to true uses default query.  </dd>   
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+                {
+                    "d": {
+                        "__type": "WorkQueueQueryResult2:http://www.kofax.com/agility/services/sdk",
+                        "JobActivitySummaryCollection": [
+                        {
+                          "Status": {
+                                "__type": "ActivityStatus:http://www.kofax.com/agility/services/sdk",
+                                "Value": 10,
+                                "FormattedAsText": "Saved"
+                            },
+                            "Priority": 1,
+                            "DueDateTime": "/Date(1583488729000+0800)/",
+                            "AssociatedFile": "RenewalNoChangeRejected.form",
+                            "ActivityIdentity": {
+                                "__type": "JobActivityIdentity:http://www.kofax.com/agility/services/sdk",
+                                "NodeId": 4,
+                                "EmbeddedProcessCount": 1,
+                                "JobId": "EEAA2C61B04347B69367428F10C16BF2",
+                                "ActivityName": "Rejected"
+                            },
+                            "Process": {
+                                "__type": "ProcessIdentity:http://www.kofax.com/agility/services/sdk",
+                                "Id": "6B194C02BE2B4103B0028D8A99104903",
+                                "Version": 47,
+                                "Name": "RenewalNoChange"
+                            },
+                            "Resource": {
+                                "__type": "ResourceIdentity:http://www.kofax.com/agility/services/sdk",
+                                "Id": "DB3ED0F2B98F40329EBEB25F1D2D8EAA",
+                                "Name": "bpmgn",
+                                "ResourceType": 0
+                            },
+                            "PendingDateTime": "/Date(1599818475293+0800)/",
+                            "CustomData": "9/11/2020 6:01:09 PM!*HUP SOON LIGHTING!*RenewalNoChange!*Fire(FMP)!*!*False!*F0233876!*40",
+                            "JobState": "Rejected   
+                         }
+                        ],
+                        "JobIdentityCollection": [],
+                        "FirstDueDate": "/Date(1583488729000+0800)/",
+                        "FirstPendingTime": "/Date(1599818475293+0800)/",
+                        "FirstPriority": 1,
+                        "LastDueDate": "/Date(1583488729000+0800)/",
+                        "LastPendingTime": "/Date(1599818475293+0800)/",
+                        "LastPriority": 1,
+                        "NumberOfActivitiesObtained": 1,
+                        "JobActivitySummary2Collection": [
+                           
+                        ],
+                        "Columns": [],
+                        "WorkQueueFields": [],
+                        "TotalActivityCount": 257
+                    }
+                }
+        </pre>
+        </dd>  
+    </dl>
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>
+</script>
