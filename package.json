@@ -18,7 +18,8 @@
       "save": "./lib/save/save.js",
       "CreateCase": "./lib/CreateCase/CreateCase.js",
       "getGroup": "./lib/getGroup/getGroup.js",
-      "reassign": "./lib/reassign/reassign.js"
+      "reassign": "./lib/reassign/reassign.js",
+      "activity-pagination": "./lib/getActivityPaging/getActivityPaging.js"
     }
   },
   "keywords": [
