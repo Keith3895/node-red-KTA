@@ -1,0 +1,125 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KTA-Session', {
+        category: 'KTA',
+        color: '#AAAA66',
+        oneditprepare: function () {
+        },
+        defaults: {
+            name: {
+                value: ""
+            },
+            content_type: {
+                value: ""
+            },
+            url: {
+                value: ""
+            },
+            sessionId: {
+                value: ""
+            },
+            ntlmPassword: {
+                value: ""
+            },
+            ntlmUsername: {
+                value: ""
+            },
+            ntlmDomain: {
+                value: ""
+            },
+            ntlmWorkstation: {
+                value: ""
+            },
+            tls: { type: "tls-config", required: false }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'KTA-Session'
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KTA-Session">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-content_type"><i class="fa fa-tasks"></i> Content-Type</label>
+        <select type="text" id="node-input-content_type" class="test" style="width:70%;">
+        <option value="application/json" selected="selected">json</option>
+        <option value="application/xml">xml</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-globe"></i> URL</label>
+        <input type="url" id="node-input-url" placeholder="/url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sessionId"><i class="icon-tag"></i> sessionId</label>
+        <input type="text" id="node-input-sessionId" placeholder="sessionId">
+    </div>
+    <h3>
+        Ntlm Config
+    </h3>
+    <div class="form-row">
+        <label for="node-input-ntlmUsername"><i class="fa fa-user"></i> ntlmUsername</label>
+        <input type="text" id="node-input-ntlmUsername" placeholder="ntlm Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmDomain"><i class="fa fa-user"></i> ntlmDomain</label>
+        <input type="text" id="node-input-ntlmDomain" placeholder="ntlm Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmWorkstation"><i class="fa fa-user"></i> ntlmWorkstation</label>
+        <input type="text" id="node-input-ntlmWorkstation" placeholder="ntlm Workstation">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntlmPassword"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-input-ntlmPassword" placeholder="Password">
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="KTA-Session">
+    <p>Node to check if session is valid in KTA</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">String</span>
+        </dt>
+        <dd> The base url of the kie-server </dd>   
+        <dt>sessionId
+            <span class="property-type">String</span>
+        </dt>
+        <dd> Unique session id used to identify current session. </dd>
+    </dl>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>Payload
+            <span class="property-type">JSON</span>
+        </dt>
+        <dd> 
+            <pre>
+                {
+                    "d": {
+                        "__type": "Session:http://www.kofax.com/agility/services/sdk",
+                        "SessionId": null,
+                        "ResourceId": null,
+                        "DisplayName": null,
+                        "IsValid": false,
+                        "LogonState": {
+                            "__type": "LogonState:http://www.kofax.com/agility/services/sdk",
+                            "FormName": "",
+                            "LogonStateType": 0
+                        }
+                    }
+                }
+        </pre>
+        </dd>  
+    </dl>
+    <h4> 
+            read about ntlm config <a href="https://github.com/Keith3895/node-red-KTA/blob/master/lib/ntlm.md" target="_blank">here</a>
+         </h4>
+</script>
