@@ -1,6 +1,6 @@
 {
   "name": "modelr-kta",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,8 @@
       "getGroup": "./lib/getGroup/getGroup.js",
       "reassign": "./lib/reassign/reassign.js",
       "activity-pagination": "./lib/getActivityPaging/getActivityPaging.js",
-      "session-valid": "./lib/session-valid/session-valid.js"
+      "session-valid": "./lib/session-valid/session-valid.js",
+      "case-identity": "./lib/GetCaseID/getCaseId.js"
     }
   },
   "keywords": [
