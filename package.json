@@ -36,6 +36,6 @@
   "dependencies": {
     "lodash": "^4.17.11",
     "request-ntlm-continued": "^0.1.5",
-    "validator": "^10.8.0"
+    "validator": "^13.7.0"
   }
 }
